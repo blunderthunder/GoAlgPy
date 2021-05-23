@@ -1,47 +1,50 @@
-def merge(a, l, m, h):
-    c = []
-    i = l
-    j = m + 1
-    s = 0
+def sort_pair(arr0, arr1):
+    if len(arr0) > len(arr1):
+        return arr1, arr0
+    else:
+        return arr0, arr1
     
-    while i <= m and j <= h:
-        if a[i] > a[j]:
-            # there is an inversion
-            s += (m - i + 1)
-            c.append(a[j])
-            j += 1
+def merge(arr0, arr1):
+    inversions = 0
+    result = []
+    # two indices to keep track of where we are in the array
+    i0 = 0
+    i1 = 0
+    # probably doesn't really save much time but neater than calling len() everywhere
+    len0 = len(arr0)
+    len1 = len(arr1)
+    while len0 > i0 and len1 > i1:
+        if arr0[i0] <= arr1[i1]:
+            result.append(arr0[i0])
+            i0 += 1
         else:
-            c.append(a[i])
-            i += 1
-            
-    # Adding remaning numbers
-    while i <= m:
-        c.append(a[i])
-        i += 1
-    while j <= h:
-        c.append(a[j])
-        j += 1
-        
-    
-    a[l: h + 1] = c
-    
-    return s
-            
+            # count the inversion right here: add the length of left array
+            inversions += len0 - i0
+            result.append(arr1[i1])
+            i1 += 1
 
-def count(a, l, h):
-    if l >= h:
-        return 0
-    #print(l, h)
-    m = l + (h - l) // 2
-    s = 0
-    s += count(a, l, m)
-    s += count(a, m + 1, h)
-    
-    s += merge(a, l, m, h)
-    return s
+    if len0 == i0:
+        result += arr1[i1:]
+    elif len1 == i1:
+        result += arr0[i0:]
 
-def count_inversions(a):
-    return count(a, 0, len(a) - 1)
+    return result, inversions
+
+def sort(arr):
+    length = len(arr)
+    mid = length//2
+    if length >= 2:
+        sorted_0, counts_0 = sort(arr[:mid])
+        sorted_1, counts_1 = sort(arr[mid:])
+        result, counts = merge(sorted_0, sorted_1)
+        return result, counts + counts_0 + counts_1
+    else:
+        return arr, 0
+
+def countInversions(a):
+    final_array, inversions = sort(a)
+    # print(final_array)
+    return inversions
 
 
 if __name__ == '__main__':
