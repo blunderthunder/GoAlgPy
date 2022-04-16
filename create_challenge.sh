@@ -11,6 +11,7 @@ create_proj_dir(){
 create_rust_proj_dir(){
     mkdir "${1}/tests"
     touch "${1}/tests/${1}_test.rs"
+    touch "${1}/src/lib.rs"
 }
 
 projdir=$1
@@ -18,7 +19,7 @@ projdir=$1
 echo $projdir > .activechallange
 
 # create the rust project
-cargo new --lib $projdir
+cargo new $projdir
 
 if [ $? -eq 0 ]; then
     create_proj_dir $projdir
