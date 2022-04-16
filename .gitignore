@@ -3,3 +3,6 @@ __pycache__
 
 .activechallange
 summarydraft.md
+
+*/target
+Cargo.lock
