@@ -8,13 +8,13 @@ Are you human, don't have any friends , linger around computers all day ? That's
 
 ## Problems
 
-- [Balanced Brackets](https://github.com/blunderthunder/GoAlgPy/blob/b198d61bfaa5d0e2328da9288cb06a307e5c93ba/balanced_brackets/readme.md)  
+- [Balanced Brackets](https://github.com/blunderthunder/GoAlgPy/blob/0d40b941e4b53c4a1e86aff69a104a9d8972b6fe/balanced_brackets/readme.md)  
 do you have OCD ? Do you love balancing things , if **yes** then this problem is for you.
 
-- [castle on the grid](https://github.com/blunderthunder/GoAlgPy/blob/c51b7ae6ef96e1725312408f15049165d24bc105/castle_on_the_grid/readme.md)  
+- [castle on the grid](https://github.com/blunderthunder/GoAlgPy/blob/a5b9d6e8a60b351d5fd8b4b1c7afd33abbf35cff/castle_on_the_grid/readme.md)  
 do you love playing with bricks and sand ? do you hate matrix ?
 
-- [Common Child](https://github.com/blunderthunder/GoAlgPy/blob/fbb9f199a825859b91497fb331dc36db56b3852f/common_child/readme.md)
+- [Common Child](https://github.com/blunderthunder/GoAlgPy/blob/dc43e09022f0eb9e892b312210fa1f4665a692ef/common_child/readme.md)
 are you the only child ? do you hate child ?
 
 - [Contains Duplicate](https://github.com/blunderthunder/GoAlgPy/blob/3e351d85bd04fb2175f670e97f6b636e9acc8abc/contains_duplicate_1/readme.md)  
