@@ -31,3 +31,6 @@ lots of queries
 
 - [friend circle queries](https://github.com/blunderthunder/GoAlgPy/blob/f217b294d3ba82a01a0d411bd6ad489a68400673/friend_circle_quries/readme.md)  
 benefits of having friends ?
+
+- [bricks falling when Hits](https://github.com/blunderthunder/GoAlgPy/blob/6bf32eb96bb04a31be2e486708b68cf688403566/bricks_falling_when_hit/readme.md)  
+which bricks will fall ?
