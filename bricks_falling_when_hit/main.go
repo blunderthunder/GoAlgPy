@@ -126,10 +126,6 @@ func hitBricks(grid [][]int, hits [][]int) []int {
 	return result
 }
 
-// func isConnected(father map[[2]int][2]int, a, b [2]int) bool {
-//     return find(father, a) == find(father, b)
-// }
-
 func main() {
 	grid := [][]int{[]int{1, 0, 0, 0}, []int{1, 1, 1, 0}}
 	hit := [][]int{[]int{1, 0}}
