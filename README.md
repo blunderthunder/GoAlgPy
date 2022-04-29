@@ -34,3 +34,7 @@ benefits of having friends ?
 
 - [bricks falling when Hits](https://github.com/blunderthunder/GoAlgPy/blob/6bf32eb96bb04a31be2e486708b68cf688403566/bricks_falling_when_hit/readme.md)  
 which bricks will fall ?
+
+- [largest Rectangles](https://github.com/blunderthunder/GoAlgPy/blob/f4bc84c992d9de4d375c447af435601e9c579965/largest_rectangle/readme.md)  
+
+- []
