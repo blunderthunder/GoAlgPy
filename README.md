@@ -37,4 +37,4 @@ which bricks will fall ?
 
 - [largest Rectangles](https://github.com/blunderthunder/GoAlgPy/blob/f4bc84c992d9de4d375c447af435601e9c579965/largest_rectangle/readme.md)  
 
-- []
+- [longest substring](https://github.com/blunderthunder/GoAlgPy/blob/7c516fc38bc493f8aae9b6da220b443bb1a84600/longest_substring/readme.md)
