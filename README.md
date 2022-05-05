@@ -41,3 +41,7 @@ which bricks will fall ?
 
 - [Max Profit](https://github.com/blunderthunder/GoAlgPy/blob/3746deb69690cf24ba555876c7145008d3636742/max_profit/readme.md)  
 Making World a better place by maximizing the profit ...
+
+- [Maximum SubAarray](https://github.com/blunderthunder/GoAlgPy/blob/d225258447ccb333f18cdf4f0c43c2b7e3b2d8df/maximum_subarray/readme.md)  
+
+- [maximum  XOR](https://github.com/blunderthunder/GoAlgPy/blob/efb3ee66220aeb41a8f55b3eee111a3f473d0dc8/maximum_xor/readme.md)  
