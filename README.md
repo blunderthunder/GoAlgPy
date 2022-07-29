@@ -44,4 +44,6 @@ Making World a better place by maximizing the profit ...
 
 - [Maximum SubAarray](https://github.com/blunderthunder/GoAlgPy/blob/d225258447ccb333f18cdf4f0c43c2b7e3b2d8df/maximum_subarray/readme.md)  
 
-- [maximum  XOR](https://github.com/blunderthunder/GoAlgPy/blob/efb3ee66220aeb41a8f55b3eee111a3f473d0dc8/maximum_xor/readme.md)  
+- [maximum  XOR](https://github.com/blunderthunder/GoAlgPy/blob/efb3ee66220aeb41a8f55b3eee111a3f473d0dc8/maximum_xor/readme.md)
+
+- [Container With Water](https://github.com/blunderthunder/GoAlgPy/blob/2c7a5a5b928910bb5059ce1d93356fed415905b6/container_with_most_water/readme.md)
