@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# exit when any command fails
+set -e
+
+
 create_proj_dir(){
     touch "${1}/readme.md"
     touch "${1}/__init__.py"
