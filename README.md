@@ -47,3 +47,5 @@ Making World a better place by maximizing the profit ...
 - [maximum  XOR](https://github.com/blunderthunder/GoAlgPy/blob/efb3ee66220aeb41a8f55b3eee111a3f473d0dc8/maximum_xor/readme.md)
 
 - [Container With Water](https://github.com/blunderthunder/GoAlgPy/blob/2c7a5a5b928910bb5059ce1d93356fed415905b6/container_with_most_water/readme.md)
+
+- [3 Sum](https://github.com/blunderthunder/GoAlgPy/blob/6ad82750233885aae02c21acac5a194b4b22df0c/threesum/readme.md)
