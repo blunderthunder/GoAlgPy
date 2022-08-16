@@ -10,6 +10,11 @@ create_proj_dir(){
     touch "${1}/main.py"
     touch "${1}/main.go"
     touch "${1}/solution.md"
+    # local title="$1"
+    local title="${1// /_}"
+    # echo "$title"
+    echo "# ${title} " >> "${1}/readme.md"
+    echo "# Solution of ${title} " >> "${1}/solution.md"
 }
 
 create_rust_proj_dir(){
