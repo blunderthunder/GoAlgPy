@@ -1,23 +1,28 @@
 package main
 
-func reverseBits(num uint64) uint64 {
+import (
+	"fmt"
+	"math/bits"
+	"os"
+	"strconv"
+)
 
-	var rev uint64 = 0
-
-	for num > 0 {
-		rev = rev << 1
-
-		if (num & 1) == 1 {
-			rev = rev ^ 1
-		}
-
-		num = num >> 1
-	}
-	return rev
+func reverseBits(num uint32) uint32 {
+	return bits.Reverse32(num)
 }
 
 func main() {
-	// var given uint64 = strconv.ParseUint("00000010100101000001111010011100")
-	// var expected uint64 = 00111001011110000010100101000000
-	// fmt.Println("given: {} , expected result : {} \n\t result : {}", given, expected, reverseBits(given))
+
+	given, err := strconv.ParseUint("00000010100101000001111010011100", 2, 32)
+	expected, _ := strconv.ParseUint("00111001011110000010100101000000", 2, 32)
+
+	if err != nil {
+		fmt.Println(err)
+		fmt.Println(fmt.Errorf("got error "))
+		os.Exit(1)
+	}
+
+	result := reverseBits(uint32(given))
+
+	fmt.Printf("Given: %d\nResult: %d\nExpected: %d\n", given, result, expected)
 }
