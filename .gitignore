@@ -6,3 +6,6 @@ summarydraft.md
 
 */target
 Cargo.lock
+
+# go file
+go.sum
