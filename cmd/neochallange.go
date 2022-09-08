@@ -50,6 +50,12 @@ func createDir(foldername string) error {
 	return err
 }
 
+func createActiveChallange(projectname string) {
+	os.Remove(".activechallange")
+	filename, _ := createFile(".activechallange")
+	writeToFile(filename, projectname)
+}
+
 func newProjDir(projectName, url string) error {
 
 	// check if cargo exist
@@ -78,6 +84,8 @@ func newProjDir(projectName, url string) error {
 
 	filename, _ = createFile(fmt.Sprintf("%s/solution.md", projectName))
 	writeToFile(filename, fmt.Sprintf("# Solution of %s \n", strings.ReplaceAll(projectName, "_", " ")))
+	// set activechallange state to newly created project
+	createActiveChallange(projectName)
 
 	log.Printf("Successfully created Project %s \n", strings.ReplaceAll(projectName, "_", " "))
 	return nil
@@ -91,7 +99,7 @@ var neoChallangeCmd = &cobra.Command{
 	Use:   "create_challenge",
 	Short: "create new directory with the challange",
 	Long:  "This command will create new project directory for leetcode challange with all required setting and file in place",
-
+	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 
 		// check if args length is exact one
