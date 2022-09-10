@@ -2,12 +2,60 @@ package cmd
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"os/exec"
 	"strings"
 
 	"github.com/spf13/cobra"
 )
 
-var possibleArgs = []string{"py", "rust", "go", "all"}
+var possibleArgs = []string{"py", "python", "rust", "go", "all"}
+
+func parseActiveProject() string {
+	data, err := os.ReadFile(".activechallange")
+
+	if err != nil {
+		log.Fatal()
+	}
+	log.Println("Fetched active Challenge !")
+	return string(data)
+}
+
+func runPyCode(activeProj string) {
+	log.Println("Running Python Code : ")
+	_, err := exec.Command("python3", fmt.Sprintf("%s/main.py")).Output()
+	if err != nil {
+		log.Panicln(err)
+	}
+}
+
+func runRustCode(activeProj string) {
+	log.Println("Running Rust Code : ")
+	_, err := exec.Command("cargo", "run", fmt.Sprintf("--manifest-path %s/Cargo.toml")).Output()
+	if err != nil {
+		log.Panicln(err)
+	}
+}
+
+func runGoCode(activeProj string) {
+	log.Println("Running Go Code : ")
+	_, err := exec.Command("go", "run", fmt.Sprintf("%s/main.go")).Output()
+	if err != nil {
+		log.Panicln(err)
+	}
+}
+
+func runAllCode(activeProj string) {
+	// run python code first
+	runPyCode(activeProj)
+
+	// run golang project
+	runGoCode(activeProj)
+
+	// run rust project
+	runRustCode(activeProj)
+}
 
 var runChallengeCmd = &cobra.Command{
 	Use:   "run_challenge",
@@ -25,6 +73,19 @@ var runChallengeCmd = &cobra.Command{
 		return fmt.Errorf("only one of `%s` args are accepted , Instead received `%s` ", "[ "+strings.Join(possibleArgs, ", ")+" ]", args[0])
 	},
 	Run: func(cmd *cobra.Command, args []string) {
+		// get current active challenge
+		activeChallenge := parseActiveProject()
+
+		if args[0] == "py" || args[0] == "python" {
+			runPyCode(activeChallenge)
+		} else if args[0] == "go" {
+			runGoCode(activeChallenge)
+		} else if args[0] == "rust" {
+			runRustCode(activeChallenge)
+		} else {
+			runAllCode(activeChallenge)
+		}
+
 	},
 }
 
