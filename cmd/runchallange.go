@@ -24,7 +24,7 @@ func parseActiveProject() string {
 
 func runPyCode(activeProj string) {
 	log.Println("Running Python Code : ")
-	_, err := exec.Command("python3", fmt.Sprintf("%s/main.py")).Output()
+	_, err := exec.Command("python3", fmt.Sprintf("%s/main.py", activeProj)).Output()
 	if err != nil {
 		log.Panicln(err)
 	}
@@ -32,7 +32,7 @@ func runPyCode(activeProj string) {
 
 func runRustCode(activeProj string) {
 	log.Println("Running Rust Code : ")
-	_, err := exec.Command("cargo", "run", fmt.Sprintf("--manifest-path %s/Cargo.toml")).Output()
+	_, err := exec.Command("cargo", "run", fmt.Sprintf("--manifest-path %s/Cargo.toml", activeProj)).Output()
 	if err != nil {
 		log.Panicln(err)
 	}
@@ -40,7 +40,7 @@ func runRustCode(activeProj string) {
 
 func runGoCode(activeProj string) {
 	log.Println("Running Go Code : ")
-	_, err := exec.Command("go", "run", fmt.Sprintf("%s/main.go")).Output()
+	_, err := exec.Command("go", "run", fmt.Sprintf("%s/main.go", activeProj)).Output()
 	if err != nil {
 		log.Panicln(err)
 	}
