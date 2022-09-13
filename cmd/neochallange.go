@@ -56,6 +56,11 @@ func createActiveChallange(projectname string) {
 	writeToFile(filename, projectname)
 }
 
+func registerChallange(projectname string) {
+	createFile(fmt.Sprintf("%s/.challenge", projectname))
+	log.Println("Completed Registering Challenge.")
+}
+
 func newProjDir(projectName, url string) error {
 
 	// check if cargo exist
@@ -88,6 +93,7 @@ func newProjDir(projectName, url string) error {
 	createActiveChallange(projectName)
 
 	log.Printf("Successfully created Project %s \n", strings.ReplaceAll(projectName, "_", " "))
+	registerChallange(projectName)
 	return nil
 }
 
