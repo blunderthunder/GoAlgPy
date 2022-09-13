@@ -52,7 +52,7 @@ var runChallengeCmd = &cobra.Command{
 	Long:  "Use this command to check solution of different language ` viable options are [ py , rust, go , all] ` ",
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) != 1 {
-			return fmt.Errorf("accepts 1 arg(s), received %d", len(args))
+			return fmt.Errorf("accepts 1 arg(s), received %d \n\n only one of `%s` args are accepted", len(args), "[ "+strings.Join(possibleArgs, ", ")+" ]")
 		}
 		for _, val := range possibleArgs {
 			if val == args[0] {
