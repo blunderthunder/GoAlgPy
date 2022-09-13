@@ -13,6 +13,21 @@ func isRustPresent() error {
 	return err
 }
 
+func isGoCodeAvailable(path string) error {
+	_, err := os.ReadFile(fmt.Sprintf("%s/main.go", path))
+	return err
+}
+
+func isPyCodeAvailable(path string) error {
+	_, err := os.ReadFile(fmt.Sprintf("%s/main.py", path))
+	return err
+}
+
+func isRustCodeAvailable(path string) error {
+	_, err := os.ReadFile(fmt.Sprintf("%s/Cargo.toml", path))
+	return err
+}
+
 func createFile(filename string) (string, error) {
 	log.Println("create file  : ", filename)
 	_, err := os.Create(filename)

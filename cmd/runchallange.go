@@ -12,24 +12,45 @@ import (
 var possibleArgs = []string{"py", "python", "rust", "go", "all"}
 
 func runPyCode(activeProj string) {
-	log.Println("Running Python Code : ")
-	_, err := exec.Command("python3", fmt.Sprintf("%s/main.py", activeProj)).Output()
+	// check python code first
+	err := isPyCodeAvailable(activeProj)
+	if err != nil {
+		log.Println("Python Code not found.")
+		return
+	}
+
+	res, err := exec.Command("python3", fmt.Sprintf("%s/main.py", activeProj)).Output()
+	log.Println("Running Python Code : ", string(res))
 	if err != nil {
 		log.Panicln(err)
 	}
 }
 
 func runRustCode(activeProj string) {
-	log.Println("Running Rust Code : ")
-	_, err := exec.Command("cargo", "run", fmt.Sprintf("--manifest-path %s/Cargo.toml", activeProj)).Output()
+
+	err := isRustCodeAvailable(activeProj)
+	if err != nil {
+		log.Println("Rust Code not found.")
+		return
+	}
+
+	res, err := exec.Command("cargo", "run", fmt.Sprintf("--manifest-path %s/Cargo.toml", activeProj)).Output()
+	log.Println("Running Rust Code : ", string(res))
 	if err != nil {
 		log.Panicln(err)
 	}
 }
 
 func runGoCode(activeProj string) {
-	log.Println("Running Go Code : ")
-	_, err := exec.Command("go", "run", fmt.Sprintf("%s/main.go", activeProj)).Output()
+
+	err := isGoCodeAvailable(activeProj)
+	if err != nil {
+		log.Println("Go Code not found.")
+		return
+	}
+
+	res, err := exec.Command("go", "run", fmt.Sprintf("%s/main.go", activeProj)).Output()
+	log.Println("Running Go Code : ", string(res))
 	if err != nil {
 		log.Panicln(err)
 	}
