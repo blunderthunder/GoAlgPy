@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 	"log"
-	"os"
 	"os/exec"
 	"strings"
 
@@ -11,16 +10,6 @@ import (
 )
 
 var possibleArgs = []string{"py", "python", "rust", "go", "all"}
-
-func parseActiveProject() string {
-	data, err := os.ReadFile(".activechallange")
-
-	if err != nil {
-		log.Fatal()
-	}
-	log.Println("Fetched active Challenge !")
-	return string(data)
-}
 
 func runPyCode(activeProj string) {
 	log.Println("Running Python Code : ")
