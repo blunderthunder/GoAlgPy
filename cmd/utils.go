@@ -5,7 +5,15 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 )
+
+func isValidLeetCodeUrl(url string) error {
+	if strings.HasPrefix(url, "https://leetcode.com/problems/") {
+		return nil
+	}
+	return fmt.Errorf("%s Not valid leetcode url", url)
+}
 
 func isRustPresent() error {
 	log.Println("Checking the presence of DARK LORD `cargo`  ...")

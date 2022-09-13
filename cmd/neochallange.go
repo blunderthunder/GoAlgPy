@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/chromedp/chromedp"
+	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
 )
 
@@ -76,14 +77,20 @@ var neoChallangeCmd = &cobra.Command{
 	Use:   "create_challenge",
 	Short: "create new directory with the challange",
 	Long:  "This command will create new project directory for leetcode challange with all required setting and file in place",
-	Args:  cobra.ExactArgs(1),
+	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 
-		// check if args length is exact one
-		if len(args) != 1 {
-			log.Fatal("Exact one args supported !")
+		prompt := promptui.Prompt{
+			Label:    "Enter LeetCode Challenge URL",
+			Validate: isValidLeetCodeUrl,
 		}
-		urlSplit := strings.Split(strings.TrimSpace(args[0]), "/")
+
+		parsedUrl, err := prompt.Run()
+
+		if err != nil {
+			log.Fatalf("Prompt failed %s\n", err)
+		}
+		urlSplit := strings.Split(strings.TrimSpace(parsedUrl), "/")
 
 		projectName := urlSplit[len(urlSplit)-1]
 		if strings.TrimSpace(projectName) == "" {
@@ -93,7 +100,7 @@ var neoChallangeCmd = &cobra.Command{
 		projectName = strings.TrimSpace(strings.ReplaceAll(projectName, "-", "_"))
 
 		// create project related files and directory here
-		newProjDir(projectName, args[0])
+		newProjDir(projectName, parsedUrl)
 	},
 }
 
