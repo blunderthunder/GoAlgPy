@@ -5,16 +5,19 @@ help:
 	| awk 'BEGIN { FS = ":.*#[[:space:]]*" } { printf "\033[1;32m%-22s\033[0m%s\n", $$1, $$2 }'
 
 new: # create new directory for the new challange 
-	sh create_challenge.sh $(path)
+	go run main.go create_challenge
 
-py: # run test of python script
-	sh run_challange.sh "py"
+run-py: # run test of python script
+	go run main.go run_challenge "py"
 
-go: # run test of golang script
-	sh run_challange.sh "go"
+run-go: # run test of golang script
+	go run main.go run_challenge "go"
 
-rust: # run rust of golang script
-	sh run_challange.sh "rust"
+run-rust: # run rust of golang script
+	go run main.go run_challenge "rust"
 
 run: # run all the script
-	sh run_challange.sh "all"
+	go run main.go run_challenge "all"
+
+select: #  select challenge as activechallenge
+	go run main.go select_challenge
