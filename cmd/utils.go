@@ -6,6 +6,8 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"syscall"
+	"time"
 )
 
 func isValidLeetCodeUrl(url string) error {
@@ -48,6 +50,10 @@ func createDir(foldername string) error {
 	return err
 }
 
+func writeToFile(filename, content string) {
+	os.WriteFile(filename, []byte(content), os.ModeAppend)
+}
+
 func registerChallange(projectname string) {
 	createFile(fmt.Sprintf("%s/.challenge", projectname))
 	log.Println("Completed Registering Challenge.")
@@ -67,4 +73,45 @@ func parseActiveProject() string {
 	}
 	log.Println("Fetched active Challenge !")
 	return string(data)
+}
+
+func executeAndLog(proj string, ptype string, cmd *exec.Cmd) {
+	// check for the timespent
+	res, timespent, memConsumed, err := runSubprocess(cmd)
+	if err != nil {
+		log.Panicln(err)
+	}
+
+	fmt.Println("")
+	log.Printf("Running %s Code : %s\n", ptype, res)
+	log.Printf("Time Spent on %s : %s\n", ptype, timespent)
+	log.Printf("Memory Consumed by %s : %d\n", ptype, memConsumed)
+	fmt.Println("")
+
+	// save the result to file
+	saveExecutedChallengeStat(proj, ptype, timespent, memConsumed)
+}
+
+func runSubprocess(cmd *exec.Cmd) (string, time.Duration, int64, error) {
+
+	starttimer := time.Now()
+	output, err := cmd.Output()
+	elapsed := time.Since(starttimer)
+
+	return string(output), elapsed, cmd.ProcessState.SysUsage().(*syscall.Rusage).Maxrss, err
+}
+
+func saveExecutedChallengeStat(proj string, ptype string, timespent time.Duration, maxMemory int64) {
+	statfile := fmt.Sprintf("%s/.%schallenge.stat", proj, ptype)
+
+	content := fmt.Sprintf("timespent:\t%s\t\tmemConsumed:\t%d\n", timespent, maxMemory)
+
+	// check if file already exist
+	_, err := os.Open(statfile)
+
+	if os.IsNotExist(err) {
+		createFile(statfile)
+	}
+
+	writeToFile(statfile, content)
 }

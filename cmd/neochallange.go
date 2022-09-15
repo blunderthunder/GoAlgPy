@@ -69,10 +69,6 @@ func newProjDir(projectName, url string) error {
 	return nil
 }
 
-func writeToFile(filename, content string) {
-	os.WriteFile(filename, []byte(content), os.ModeAppend)
-}
-
 var neoChallangeCmd = &cobra.Command{
 	Use:   "create_challenge",
 	Short: "create new directory with the challange",

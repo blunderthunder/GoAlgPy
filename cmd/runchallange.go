@@ -18,12 +18,7 @@ func runPyCode(activeProj string) {
 		log.Println("Python Code not found.")
 		return
 	}
-
-	res, err := exec.Command("python3", fmt.Sprintf("%s/main.py", activeProj)).Output()
-	log.Println("Running Python Code : ", string(res))
-	if err != nil {
-		log.Panicln(err)
-	}
+	executeAndLog(activeProj, "py", exec.Command("python3", fmt.Sprintf("%s/main.py", activeProj)))
 }
 
 func runRustCode(activeProj string) {
@@ -33,12 +28,7 @@ func runRustCode(activeProj string) {
 		log.Println("Rust Code not found.")
 		return
 	}
-
-	res, err := exec.Command("cargo", "run", fmt.Sprintf("--manifest-path %s/Cargo.toml", activeProj)).Output()
-	log.Println("Running Rust Code : ", string(res))
-	if err != nil {
-		log.Panicln(err)
-	}
+	executeAndLog(activeProj, "rust", exec.Command("cargo", "run", fmt.Sprintf("--manifest-path %s/Cargo.toml", activeProj)))
 }
 
 func runGoCode(activeProj string) {
@@ -48,12 +38,7 @@ func runGoCode(activeProj string) {
 		log.Println("Go Code not found.")
 		return
 	}
-
-	res, err := exec.Command("go", "run", fmt.Sprintf("%s/main.go", activeProj)).Output()
-	log.Println("Running Go Code : ", string(res))
-	if err != nil {
-		log.Panicln(err)
-	}
+	executeAndLog(activeProj, "go", exec.Command("go", "run", fmt.Sprintf("%s/main.go", activeProj)))
 }
 
 func runAllCode(activeProj string) {
