@@ -69,7 +69,7 @@ func parseActiveProject() string {
 	data, err := os.ReadFile(".activechallange")
 
 	if err != nil {
-		log.Fatal()
+		log.Fatal(err)
 	}
 	log.Println("Fetched active Challenge !")
 	return string(data)
@@ -79,7 +79,7 @@ func executeAndLog(proj string, ptype string, cmd *exec.Cmd) {
 	// check for the timespent
 	res, timespent, memConsumed, err := runSubprocess(cmd)
 	if err != nil {
-		log.Panicln(err)
+		log.Println(err)
 	}
 
 	fmt.Println("")
