@@ -79,7 +79,8 @@ func executeAndLog(proj string, ptype string, cmd *exec.Cmd) {
 	// check for the timespent
 	res, timespent, memConsumed, err := runSubprocess(cmd)
 	if err != nil {
-		log.Println(err)
+		fmt.Println(res)
+		log.Fatalln(err)
 	}
 
 	fmt.Println("")
@@ -94,8 +95,9 @@ func executeAndLog(proj string, ptype string, cmd *exec.Cmd) {
 
 func runSubprocess(cmd *exec.Cmd) (string, time.Duration, int64, error) {
 
+	// pipe the error
 	starttimer := time.Now()
-	output, err := cmd.Output()
+	output, err := cmd.CombinedOutput()
 	elapsed := time.Since(starttimer)
 
 	return string(output), elapsed, cmd.ProcessState.SysUsage().(*syscall.Rusage).Maxrss, err
