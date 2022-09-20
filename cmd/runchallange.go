@@ -28,7 +28,7 @@ func runRustCode(activeProj string) {
 		log.Println("Rust Code not found.")
 		return
 	}
-	executeAndLog(activeProj, "rust", exec.Command("cargo", "run", fmt.Sprintf("--manifest-path %s/Cargo.toml", activeProj)))
+	executeAndLog(activeProj, "rust", exec.Command("cargo", "run", "--manifest-path", fmt.Sprintf("%s/Cargo.toml", activeProj)))
 }
 
 func runGoCode(activeProj string) {
