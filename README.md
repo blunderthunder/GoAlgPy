@@ -53,3 +53,5 @@ Making World a better place by maximizing the profit ...
 - [maximum nesting depth of two valid parenthesis](https://github.com/blunderthunder/GoAlgPy/blob/0499dfb3abcb6e692c67897ab0709208c4f0a129/maximum_nesting_depth_of_two_valid_parentheses/readme.md)
 
 - [Compare Version number](https://github.com/blunderthunder/GoAlgPy/blob/2850a89e61717812f26d740d73248cf446c8dfbb/compare_version_number/readme.md)
+
+- [All Possible Binary Tree](https://github.com/blunderthunder/GoAlgPy/blob/e3882d31cd7627753af39da005b6be20ceaed5d3/all_possible_full_binary_trees/readme.md)
