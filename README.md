@@ -55,3 +55,5 @@ Making World a better place by maximizing the profit ...
 - [Compare Version number](https://github.com/blunderthunder/GoAlgPy/blob/2850a89e61717812f26d740d73248cf446c8dfbb/compare_version_number/readme.md)
 
 - [All Possible Binary Tree](https://github.com/blunderthunder/GoAlgPy/blob/e3882d31cd7627753af39da005b6be20ceaed5d3/all_possible_full_binary_trees/readme.md)
+
+- [Random pick with Weight](https://github.com/blunderthunder/GoAlgPy/blob/254f04e1974a1ff516e61c1c1ea403e57689a4a6/random_pick_with_weight/readme.md)
